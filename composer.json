@@ -1,0 +1,13 @@
+{
+    "name": "calvinmuller/spree",
+    "description": "Spree API",
+    "type": "package",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spree\\": "src/Spree/"
+        }
+    }
+}

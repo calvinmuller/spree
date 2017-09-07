@@ -2,48 +2,30 @@
 
 namespace Spree;
 
-use \Httpful\Request as Request;
-
-class Brand extends ApiBase
+class Brand extends Api
 {
 
+
+    /**
+     * Get all brands
+     * @param null $parameters
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function all($parameters = null)
     {
-        $parameters = [
-            't' => microtime(true),
-        ];
-
-        $apiUrl = strtr(':apiBase/brands?:queryParams', array(
-            ':apiBase' => getenv('SUPERBALIST_API_URL'),
-            ':queryParams' => http_build_query($parameters),
-        ));
-
-        $headers = self::_getCommonHeaders();
-
-        $response = Request::get($apiUrl)
-            ->addHeaders($headers)->send();
-
-        return $response;
+        return $this->get('catalog/brands');
     }
 
-    public function get($brand, $parameter = null)
+
+    /**
+     * Get brand
+     * @param $id
+     * @param null $parameter
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function find($id, $parameter = null)
     {
-        $parameters = [
-            't' => microtime(true),
-        ];
-
-        $apiUrl = strtr(':apiBase/brand/:brand?:queryParams', array(
-            ':apiBase' => getenv('SUPERBALIST_API_URL'),
-            ':queryParams' => http_build_query($parameters),
-            ':brand' => $brand,
-        ));
-
-        $headers = self::_getCommonHeaders();
-
-        $response = Request::get($apiUrl)
-            ->addHeaders($headers)->send();
-
-        return $response;
+        return $this->get("catalog/brand/{$id}");
 
     }
 
