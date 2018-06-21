@@ -9,5 +9,8 @@
         "psr-4": {
             "Spree\\": "src/Spree/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
     }
 }

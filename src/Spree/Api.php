@@ -14,11 +14,16 @@ class Api extends Client
      */
     public $client;
 
+    protected $_baseUrl = 'https://www.spree.co.za/api/v1/';
+
+    public function setBaseUrl($baseUrl) {
+        $this->_baseUrl = $baseUrl;
+    }
+
     public function __construct(array $config = [])
     {
         $config = [
-            'base_uri' => env('SPREE_API_URL',
-                'https://www.spree.co.za/api/v1/'),
+            'base_uri' => $this->_baseUrl,
         ];
 
         parent::__construct($config);
